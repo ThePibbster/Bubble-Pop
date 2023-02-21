@@ -28,7 +28,7 @@ func _physics_process(delta) -> void:
 		ammo -= 1
 		var Bubble = bubble.instance()
 		add_child(Bubble)
-		Bubble.position = self.position + Vector2(0, 5)
+		Bubble.position = self.position + Vector2(19, 5)
 		Bubble.set_as_toplevel(true)
 
 func _on_Bubble_Refill_body_entered(_body):
