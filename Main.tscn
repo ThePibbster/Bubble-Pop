@@ -51,7 +51,7 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 3.5, 4.5 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Main" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
