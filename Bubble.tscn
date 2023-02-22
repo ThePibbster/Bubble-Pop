@@ -4,7 +4,7 @@
 [ext_resource path="res://Bubble.gd" type="Script" id=2]
 [ext_resource path="res://BubbleArea2D.gd" type="Script" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 4, 4 )
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -19,7 +19,7 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bubble"]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Area2D" type="Area2D" parent="bubble"]
 script = ExtResource( 3 )
