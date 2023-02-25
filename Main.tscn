@@ -30,6 +30,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 43, 37 ), Vector2( 43, 35 ), Vector2( 43, 39 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "bubble bottle bounce"

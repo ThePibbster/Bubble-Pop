@@ -24,8 +24,8 @@ func _ready():
 func kill():
 	queue_free()
 
-# makes the bubble bounce when it collides with an object
 func _physics_process(delta):
+	# makes the bubble bounce when it collides with an object
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
 		velocity = velocity.bounce(collision_info.normal)
