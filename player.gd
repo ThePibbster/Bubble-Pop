@@ -10,7 +10,11 @@ var direction = "right"
 
 func _physics_process(delta) -> void: # SHOULDN'T THE MOVEMENT AND JUMPING BE MULTIPLIED BY DELTA?
 	# movement and facing a direction
-	velocity.x -= clamp(velocity.x, -50, 50) # bro i literally don't know tbh
+	if self.is_on_floor():
+		velocity.x = 0
+	else:
+		velocity.x = clamp(velocity.x, -50, 50)
+	
 	if Input.is_action_pressed("right"):
 		velocity.x += speed 
 		direction = "right"
@@ -35,7 +39,8 @@ func _physics_process(delta) -> void: # SHOULDN'T THE MOVEMENT AND JUMPING BE MU
 		ammo -= 1
 		var Bubble = bubble.instance()
 		add_child(Bubble)
-		Bubble.get_node("bubble/Area2D").connect("bubble_collide", self, "touchBubbleLeft")
+		Bubble.get_node("bubble/LeftArea2D").connect("left_bubble_collide", self, "touchBubbleLeft")
+		Bubble.get_node("bubble/RightArea2D").connect("right_bubble_collide", self, "touchBubbleRight")
 		# decides starting position of the bubble depending on the player's direction
 		if direction == "right":
 			Bubble.position = self.position + Vector2(19, 5)
@@ -52,7 +57,12 @@ func _on_Bubble_Refill_body_entered(body):
 	if (body == self):
 		ammo = 3
 
-# makes the player bounce off the bubble (NOT FINISHED, PROBABLY NEED TO SPLIT THE BUBBLE AREA 2D INTO 2 PARTS OR USE THE (UNUSED) RAY CASTS IDK)
+# makes the player bounce off the bubble from the left
 func touchBubbleLeft():
 	velocity.y = -jump * 1.5
 	velocity.x = 100
+
+# makes the player bounce off the bubble from the right
+func touchBubbleRight():
+	velocity.y = -jump * 1.5
+	velocity.x = -100

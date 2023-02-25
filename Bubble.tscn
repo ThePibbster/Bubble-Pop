@@ -1,14 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://even smaller bubble.png" type="Texture" id=1]
 [ext_resource path="res://Bubble.gd" type="Script" id=2]
-[ext_resource path="res://BubbleArea2D.gd" type="Script" id=3]
+[ext_resource path="res://LeftBubble2D.gd" type="Script" id=3]
+[ext_resource path="res://RightArea2D.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 4, 4 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 5, 5 )
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 2.5, 5 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 2.5, 5 )
 
 [node name="Bubble" type="Node2D"]
 
@@ -21,18 +25,16 @@ texture = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bubble"]
 shape = SubResource( 3 )
 
-[node name="Area2D" type="Area2D" parent="bubble"]
+[node name="LeftArea2D" type="Area2D" parent="bubble"]
 script = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bubble/Area2D"]
-shape = SubResource( 2 )
+[node name="LeftCollisionShape2D" type="CollisionShape2D" parent="bubble/LeftArea2D"]
+position = Vector2( -2.5, 0 )
+shape = SubResource( 4 )
 
-[node name="RightRayCast2D" type="RayCast2D" parent="bubble"]
-rotation = -1.5708
-enabled = true
-cast_to = Vector2( -6.99382e-07, 16 )
+[node name="RightArea2D" type="Area2D" parent="bubble"]
+script = ExtResource( 4 )
 
-[node name="LeftRayCast2D" type="RayCast2D" parent="bubble"]
-rotation = 1.5708
-enabled = true
-cast_to = Vector2( 6.55671e-07, 15 )
+[node name="RightCollisionShape2D" type="CollisionShape2D" parent="bubble/RightArea2D"]
+position = Vector2( 2.5, 0 )
+shape = SubResource( 5 )
