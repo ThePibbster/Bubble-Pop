@@ -10,13 +10,13 @@
 extents = Vector2( 4, 4 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 2.5, 4.5 )
+extents = Vector2( 2.5, 2.5 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 2.5, 4.5 )
+extents = Vector2( 2.5, 2.5 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 5, 0.5 )
+extents = Vector2( 5, 2.5 )
 
 [node name="Bubble" type="Node2D"]
 
@@ -33,20 +33,19 @@ shape = SubResource( 3 )
 script = ExtResource( 3 )
 
 [node name="LeftCollisionShape2D" type="CollisionShape2D" parent="bubble/LeftArea2D"]
-position = Vector2( -2.5, -0.5 )
+position = Vector2( -2.5, -2.5 )
 shape = SubResource( 4 )
 
 [node name="RightArea2D" type="Area2D" parent="bubble"]
 script = ExtResource( 4 )
 
 [node name="RightCollisionShape2D" type="CollisionShape2D" parent="bubble/RightArea2D"]
-position = Vector2( 2.5, -0.5 )
+position = Vector2( 2.5, -2.5 )
 shape = SubResource( 5 )
 
 [node name="BottomArea2D" type="Area2D" parent="bubble"]
-position = Vector2( 0, 3 )
 script = ExtResource( 5 )
 
 [node name="BottomCollisionShape" type="CollisionShape2D" parent="bubble/BottomArea2D"]
-position = Vector2( 0, 1.5 )
+position = Vector2( 0, 2.5 )
 shape = SubResource( 6 )
