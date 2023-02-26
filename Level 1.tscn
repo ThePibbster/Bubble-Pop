@@ -43,22 +43,34 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( -0.5, -2.5 ), Vector2( -0.5, -4.5 ), Vector2( -0.5, -0.5 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationPlayer/Sprite:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "bubble bottle bounce"
 length = 2.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimationPlayer/Sprite:position")
+tracks/0/path = NodePath("AnimationPlayer/Sprite:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 43, 38 ), Vector2( 43, 37 ), Vector2( 43, 36 ), Vector2( 43, 37 ), Vector2( 43, 38 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, -1.479 ), Vector2( 0, -1.691 ) ]
 }
 
 [sub_resource type="RectangleShape2D" id=5]
@@ -83,7 +95,7 @@ __meta__ = {
 }
 
 [node name="Bubble Refill" type="Area2D" parent="."]
-position = Vector2( 263, -49 )
+position = Vector2( 76, 20 )
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bubble Refill"]
@@ -92,6 +104,7 @@ scale = Vector2( 1.1, 0.9 )
 shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Bubble Refill"]
+autoplay = "bubble bottle bounce"
 anims/RESET = SubResource( 6 )
 "anims/bubble bottle bounce" = SubResource( 7 )
 

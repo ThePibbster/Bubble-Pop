@@ -1,5 +1,5 @@
 extends Timer
-
+#kill yourself
 
 onready var timer = $"/root/Main/Camera2D/ColorRect/timer"
 
