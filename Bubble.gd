@@ -1,17 +1,18 @@
 extends KinematicBody2D
 
 var timer = Timer.new()
-var velocity = Vector2(25, 0)
+var speed = 60
+var velocity = Vector2(speed, 0)
 onready var player = $"/root/Main/player"
 
 func _ready():
 	# changes velocity to match the player's direction (if needed)
 	if player.direction == "left":
-		velocity = Vector2(-25, 0)
+		velocity = Vector2(-speed, 0)
 	elif player.direction == "down":
-		velocity = Vector2(0, 25)
+		velocity = Vector2(0, speed - 35)
 	elif player.direction == "up":
-		velocity = Vector2(0, -25)
+		velocity = Vector2(0, -speed)
 	
 	# creates and starts a 2 second timer that will call the func kill when it's over
 	timer.connect("timeout", self, "kill")
