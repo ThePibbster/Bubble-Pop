@@ -111,3 +111,7 @@ func touchBubbleRight():
 	velocity.y = -jump * 1.5
 	if velocity.x != 0:
 		velocity.x = -100
+
+
+func _on_Timer_timeout():
+	get_tree().change_scene_to(load("res://End.tscn"))
