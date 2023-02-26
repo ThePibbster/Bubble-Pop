@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 125, 1 )
+
+[node name="Floor" type="Node2D"]
+position = Vector2( -9, -4 )
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2( -56, -4 )
+scale = Vector2( 1, 4 )
+
+[node name="ColorRect" type="ColorRect" parent="Floor"]
+margin_left = -69.0
+margin_right = 181.0
+margin_bottom = 2.0
+rect_pivot_offset = Vector2( 125, 1 )
+color = Color( 0.780392, 0.941176, 0.847059, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2( 56, 1 )
+shape = SubResource( 1 )
