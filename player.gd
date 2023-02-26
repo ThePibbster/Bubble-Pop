@@ -67,7 +67,7 @@ func _physics_process(delta) -> void: # SHOULDN'T THE MOVEMENT AND JUMPING BE MU
 				Bubble.position = self.position + Vector2(10, 16)
 		elif vdirection == "up":
 			if $upcast.is_colliding():
-				Bubble.position = self.position + Vector2(10, -3)
+				Bubble.position = self.position + Vector2(10, -4)
 			else:
 				Bubble.position = self.position + Vector2(10, -5)
 		elif hdirection == "right":
