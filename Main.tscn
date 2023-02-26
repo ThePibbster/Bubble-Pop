@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://little girl.png" type="Texture" id=1]
 [ext_resource path="res://bubble bottle.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://bubblecount.png" type="Texture" id=7]
 [ext_resource path="res://jump.wav" type="AudioStream" id=8]
 [ext_resource path="res://Timer.gd" type="Script" id=9]
+[ext_resource path="res://timertext.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 125, 1 )
@@ -210,19 +211,20 @@ script = SubResource( 9 )
 [node name="timer" type="RichTextLabel" parent="Camera2D/ColorRect"]
 margin_left = 2.0
 margin_top = -3.0
-margin_right = 64.0
+margin_right = 91.0
 margin_bottom = 26.0
 theme = ExtResource( 6 )
 custom_colors/default_color = Color( 0.262745, 0.321569, 0.239216, 1 )
 visible_characters = 6
 text = "HAROLD
 "
+script = ExtResource( 10 )
 
-[node name="Timer" type="Timer" parent="Camera2D"]
+[node name="Timer" type="Timer" parent="Camera2D/ColorRect/timer"]
 process_mode = 0
 one_shot = true
 autostart = true
 script = ExtResource( 9 )
 
 [connection signal="body_entered" from="Bubble Refill" to="player" method="_on_Bubble_Refill_body_entered"]
-[connection signal="timeout" from="Camera2D/Timer" to="player" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Camera2D/ColorRect/timer/Timer" to="player" method="_on_Timer_timeout"]
