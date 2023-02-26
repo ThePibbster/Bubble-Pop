@@ -7,12 +7,12 @@ onready var player = $"/root/Main/player"
 
 func _ready():
 	# changes velocity to match the player's direction (if needed)
-	if player.direction == "left":
-		velocity = Vector2(-speed, 0)
-	elif player.direction == "down":
+	if player.vdirection == "down":
 		velocity = Vector2(0, speed - 35)
-	elif player.direction == "up":
+	elif player.vdirection == "up":
 		velocity = Vector2(0, -speed)
+	elif player.hdirection == "left":
+		velocity = Vector2(-speed, 0)
 	
 	# creates and starts a 2 second timer that will call the func kill when it's over
 	timer.connect("timeout", self, "kill")

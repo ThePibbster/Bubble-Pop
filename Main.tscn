@@ -7,7 +7,7 @@
 [ext_resource path="res://CameraController.gd" type="Script" id=5]
 [ext_resource path="res://Font.tres" type="Theme" id=6]
 [ext_resource path="res://bubblecount.png" type="Texture" id=7]
-[ext_resource path="res://even smaller bubble.png" type="Texture" id=8]
+[ext_resource path="res://jump.wav" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 125, 1 )
@@ -82,6 +82,7 @@ color = Color( 0.262745, 0.321569, 0.239216, 1 )
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2( 5, 44 )
+scale = Vector2( 1, 4 )
 
 [node name="ColorRect" type="ColorRect" parent="Floor"]
 margin_left = -69.0
@@ -164,16 +165,19 @@ cast_to = Vector2( 14, 0 )
 [node name="upcast" type="RayCast2D" parent="player"]
 position = Vector2( 10, 6 )
 enabled = true
-cast_to = Vector2( 0, -14 )
+cast_to = Vector2( 0, -15 )
 
 [node name="downcast" type="RayCast2D" parent="player"]
 position = Vector2( 10, 4 )
 enabled = true
-cast_to = Vector2( 0, 14 )
+cast_to = Vector2( 0, 16 )
 
-[node name="EvenSmallerBubble" type="Sprite" parent="player/downcast"]
-position = Vector2( -10, 1 )
-texture = ExtResource( 8 )
+[node name="JumpAudio" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource( 8 )
+
+[node name="ShootAudio" type="AudioStreamPlayer2D" parent="player"]
+
+[node name="BottleAudio" type="AudioStreamPlayer2D" parent="player"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 42, 24 )
