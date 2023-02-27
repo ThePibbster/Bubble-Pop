@@ -21,13 +21,10 @@ func _physics_process(delta) -> void: # SHOULDN'T THE MOVEMENT AND JUMPING BE MU
 		bounce = false
 		up = false
 	
-	if bounce == false:
+	if bounce == false || up == true:
 		velocity.x = 0
 	else:
-		if !up:
-			velocity.x = clamp(velocity.x, -50, 50)
-		else:
-			velocity.x = clamp(velocity.x, -20, 20)
+		velocity.x = clamp(velocity.x, -80, 80)
 
 	if Input.is_action_pressed("right"):
 		velocity.x += speed 
@@ -75,14 +72,14 @@ func _physics_process(delta) -> void: # SHOULDN'T THE MOVEMENT AND JUMPING BE MU
 		# decides starting position of the bubble depending on the player's direction
 		if vdirection == "down":
 			if $downcast.is_colliding():
-				Bubble.position = self.position + Vector2(10, 15)
+				Bubble.position = self.position + Vector2(9, 15)
 			else:
-				Bubble.position = self.position + Vector2(10, 16)
+				Bubble.position = self.position + Vector2(9, 16)
 		elif vdirection == "up":
 			if $upcast.is_colliding():
-				Bubble.position = self.position + Vector2(10, -4)
+				Bubble.position = self.position + Vector2(9, -5)
 			else:
-				Bubble.position = self.position + Vector2(10, -5)
+				Bubble.position = self.position + Vector2(9, -6)
 		elif hdirection == "right":
 			if $rightcast.is_colliding():
 				Bubble.position = self.position + Vector2(18, 5)
@@ -90,9 +87,9 @@ func _physics_process(delta) -> void: # SHOULDN'T THE MOVEMENT AND JUMPING BE MU
 				Bubble.position = self.position + Vector2(19, 5)
 		elif hdirection == "left":
 			if $leftcast.is_colliding():
-				Bubble.position = self.position + Vector2(1, 5)
+				Bubble.position = self.position + Vector2(-1, 5)
 			else:
-				Bubble.position = self.position + Vector2(0, 5)
+				Bubble.position = self.position + Vector2(-2, 5)
 		Bubble.set_as_toplevel(true) # makes the bubble not stick to the player
 		bubblecountText.set_text(str(ammo))
 
@@ -136,10 +133,6 @@ func touchBubbleTop():
 	$JumpAudio.play()
 	velocity.y = -jump * 1.45
 
-func _on_Timer_timeout():
-	if get_tree().change_scene_to(load("res://End.tscn")) != OK:
-		print("An unexpected error occured when trying to switch to the End scene")
-
 func stopAudio():
 	if $JumpAudio.is_playing():
 		$JumpAudio.stop()
@@ -147,3 +140,12 @@ func stopAudio():
 		$ShootAudio.stop()
 	if $BottleAudio.is_playing():
 		$BottleAudio.stop()
+
+func _on_Cat_Bubble_body_entered(body):
+	if (body == self):
+		if get_tree().change_scene_to(load("res://End.tscn")) != OK:
+			print("An unexpected error occured when trying to switch to the End scene")
+
+func _on_DeathZone_body_entered(_body):
+	position.x = 1
+	position.y = 21

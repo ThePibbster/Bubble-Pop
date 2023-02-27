@@ -1,4 +1,6 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://end.png" type="Texture" id=1]
 
 [node name="Node2D" type="Node2D"]
 
@@ -7,9 +9,6 @@ margin_right = 84.0
 margin_bottom = 48.0
 color = Color( 0.262745, 0.321569, 0.239216, 1 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 2.0
-margin_top = 15.0
-margin_right = 86.0
-margin_bottom = 55.0
-text = "kill yourself"
+[node name="End" type="Sprite" parent="."]
+position = Vector2( 42, 24 )
+texture = ExtResource( 1 )
