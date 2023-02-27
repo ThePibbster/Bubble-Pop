@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cat bubble.png-e26ea3aed551d770193e2da117a5319f.stex"
+path="res://.import/cat bubble5.png-a940d6fa893f16ae1a51264d702d437f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cat bubble.png"
-dest_files=[ "res://.import/cat bubble.png-e26ea3aed551d770193e2da117a5319f.stex" ]
+source_file="res://Cat Bubble/cat bubble5.png"
+dest_files=[ "res://.import/cat bubble5.png-a940d6fa893f16ae1a51264d702d437f.stex" ]
 
 [params]
 

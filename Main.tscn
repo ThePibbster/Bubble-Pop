@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://little girl.png" type="Texture" id=1]
-[ext_resource path="res://bubble bottle.png" type="Texture" id=2]
+[ext_resource path="res://Bottle/bubble bottle2.png" type="Texture" id=2]
 [ext_resource path="res://player.gd" type="Script" id=3]
 [ext_resource path="res://Bubble Refill.gd" type="Script" id=4]
 [ext_resource path="res://CameraController.gd" type="Script" id=5]
@@ -9,6 +9,9 @@
 [ext_resource path="res://bubblecount.png" type="Texture" id=7]
 [ext_resource path="res://jump.wav" type="AudioStream" id=8]
 [ext_resource path="res://Timer.gd" type="Script" id=9]
+[ext_resource path="res://Bottle/bubble bottle3.png" type="Texture" id=10]
+[ext_resource path="res://Bottle/bubble bottle1.png" type="Texture" id=11]
+[ext_resource path="res://Bottle/bubble bottle4.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 125, 1 )
@@ -17,52 +20,15 @@ extents = Vector2( 125, 1 )
 extents = Vector2( 1, 6.5 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 2.27273, 5 )
+extents = Vector2( 2.27273, 6.11111 )
 
-[sub_resource type="Animation" id=6]
-length = 1.5
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimationPlayer/Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 43, 37 ), Vector2( 43, 35 ), Vector2( 43, 39 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionShape2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -0.5, -2.5 ), Vector2( -0.5, -4.5 ), Vector2( -0.5, -0.5 ) ]
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "bubble bottle bounce"
-length = 2.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimationPlayer/Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 43, 38 ), Vector2( 43, 37 ), Vector2( 43, 36 ), Vector2( 43, 37 ), Vector2( 43, 38 ) ]
-}
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 2 ), ExtResource( 10 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 3.5, 4.5 )
@@ -120,21 +86,19 @@ position = Vector2( 72, -2.5 )
 shape = SubResource( 8 )
 
 [node name="Bubble Refill" type="Area2D" parent="."]
-position = Vector2( 43, 39 )
+position = Vector2( 74, 18 )
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bubble Refill"]
-position = Vector2( -0.5, -2.5 )
+position = Vector2( -0.5, -0.5 )
 scale = Vector2( 1.1, 0.9 )
 shape = SubResource( 3 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Bubble Refill"]
-anims/RESET = SubResource( 6 )
-"anims/bubble bottle bounce" = SubResource( 7 )
-
-[node name="Sprite" type="Sprite" parent="Bubble Refill/AnimationPlayer"]
-position = Vector2( 43, 37 )
-texture = ExtResource( 2 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Bubble Refill"]
+frames = SubResource( 9 )
+frame = 2
+speed_scale = 0.623
+playing = true
 
 [node name="player" type="KinematicBody2D" parent="."]
 position = Vector2( 1, 21 )

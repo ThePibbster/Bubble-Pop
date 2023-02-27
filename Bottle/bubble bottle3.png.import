@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cat bubble.png-e26ea3aed551d770193e2da117a5319f.stex"
+path="res://.import/bubble bottle3.png-1ddac0dcef81d5c93190a09d59adb131.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cat bubble.png"
-dest_files=[ "res://.import/cat bubble.png-e26ea3aed551d770193e2da117a5319f.stex" ]
+source_file="res://Bottle/bubble bottle3.png"
+dest_files=[ "res://.import/bubble bottle3.png-1ddac0dcef81d5c93190a09d59adb131.stex" ]
 
 [params]
 

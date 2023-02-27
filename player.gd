@@ -25,7 +25,7 @@ func _physics_process(delta) -> void: # SHOULDN'T THE MOVEMENT AND JUMPING BE MU
 		velocity.x = 0
 	else:
 		if !up:
-			velocity.x = clamp(velocity.x, -50, 50)
+			velocity.x = clamp(velocity.x, -60, 60)
 		else:
 			velocity.x = clamp(velocity.x, -20, 20)
 
@@ -43,7 +43,7 @@ func _physics_process(delta) -> void: # SHOULDN'T THE MOVEMENT AND JUMPING BE MU
 		vdirection = "none"
 	
 	# jumping
-	if Input.is_action_just_pressed("up") && is_on_floor():
+	if Input.is_action_pressed("up") && is_on_floor():
 		velocity.y = -jump
 		stopAudio()
 		$JumpAudio.stream = boing
@@ -140,3 +140,7 @@ func stopAudio():
 		$ShootAudio.stop()
 	if $BottleAudio.is_playing():
 		$BottleAudio.stop()
+
+func _on_Cat_Bubble_body_entered(_body):
+	if get_tree().change_scene_to(load("res://Main.tscn")) != OK:
+		print("An unexpected error occured when trying to switch to the Main scene")
